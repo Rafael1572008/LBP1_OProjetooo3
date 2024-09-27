@@ -1,2 +1,2 @@
 # LBP1
-Progrmão
+Programão
