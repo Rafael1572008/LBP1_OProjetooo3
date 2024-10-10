@@ -1,13 +1,13 @@
 # LBP1
-python3 -m venv diretorio
+python3 -m venv AMB
 
-#linux
-source diretorio/bin/activate
+# linux
+source AMB/bin/activate
 
 pip install flask
 
 selecionar interpretador
 
-#windows
+# windows
 
-venv\Scripts\activate
+AMB\Scripts\activate

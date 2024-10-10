@@ -2,21 +2,25 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Tarefas</title>
+    <title>Titulo Gamer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Gamers</h1>
-    <ul>
-        {% for tarefa in tarefas %}
-            <li>
-                {{ tarefa.nome }} - 
-                {% if tarefa.estilo %}
-                    {{ tarefa.estilo }}
-                {% else %}
-                    Não concluída
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+    <h1 class="title">Titulo Gamer</h1>
+    <div class="container">
+        <ul>
+            {% for tarefa in tarefas %}
+                <li>
+                    {{ tarefa.nome }} - 
+                    {% if tarefa.estilo %}
+                        {{ tarefa.estilo }}
+                    {% else %}
+                        Não concluída
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
