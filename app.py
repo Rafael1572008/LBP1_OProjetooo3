@@ -1,18 +1,12 @@
-from flask import Flask, render_template, blueprints
-from controlers import controler
+from flask import Flask
+from controllers.controller1 import tarefas_controllers
 
 app = Flask(__name__)
+app.register_blueprint(tarefas_controllers)
 
-app.register_blueprint(controler.Gamer)
+@app.route('/hello')
+def hello():
+    return "Hello World"
 
-
-@app.route("/")
-def hello_world():
-    return render_template("html.html")
-
-if __name__ == '__main__':
-    app.run(debug = True)
-
-
-
-
+if (__name__) == '__main__':
+    app.run(debug=True)

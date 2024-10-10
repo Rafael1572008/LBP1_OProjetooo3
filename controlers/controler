@@ -1,8 +1,0 @@
-from flask import Blueprint, render_template
-from models.models1 import gamer
-
-Gamer = Blueprint(gamer)
-
-@Gamer.route("/")
-def index_gamer():
-    render_template("html.html", gamer = gamer)

@@ -1,10 +1,9 @@
-class Game:
-    def __init__(self, nome, estilo):
+class Tarefas:
+    def __init__(self, nome, estilo = "Não encontrado"):
         self.nome = nome
         self.estilo = estilo
 
-gamer = []
-
-game = Game("PalWord", "Processada")
-
-gamer.append(game)
+tarefas = []
+t1 = (Tarefas("Palworld", "Mundo Abrido"))
+tarefas.append(t1)
+tarefas.append((Tarefas("Super Mariano")))
