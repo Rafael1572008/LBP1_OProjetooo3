@@ -3,9 +3,8 @@
        # self.nome = nome
         #self.estilo = estilo
 
-tarefas = []
+tarefas = [{"nome": "MuBesta", "senha": "12345", "admin": 1},
+           {"nome": "Rafapi", "senha": "senha", "admin": 0}]
 #t1 = (Tarefas("Palworld", "Mundo Abrido"))
 #tarefas.append(t1)
 #tarefas.append((Tarefas("Super Mariano")))
-
-users = {"nome": "MuBesta", "senha": "12345", "admin": 1}

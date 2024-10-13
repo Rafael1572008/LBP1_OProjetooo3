@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, session, request, url_for, redirect
-from models.models1 import tarefas, users
+from models.models1 import tarefas
 
 tarefas_controllers = Blueprint(tarefas, __name__)
 
@@ -11,10 +11,11 @@ def index():
 def hello():
     return render_template("login.html")
 
-@tarefas_controllers.route('/pegar')
+@tarefas_controllers.route('/pegar', methods = ['POST'])
 def pegar():
-    nome = request.args.get('username')
-    senha = request.args.get('password')
+    nome = request.form.get('username')
+    senha = request.form.get('password')
 
-    if users["nome"] == nome and users["senha"] == senha:
-        redirect(url_for('index'))
+    for user in tarefas:
+        if user["nome"] == nome and user["senha"] == senha:
+            return render_template('html.html', tarefas = tarefas)
