@@ -16,6 +16,11 @@
     <input type="password" id="password" name="password" required><br><br>
     
     <button type="submit">Entrar</button>
+    <P>
+        {% if aviso %}
+            {{ aviso }}
+        {% endif %}    
+    </P>
 </form>
 
 </body>
