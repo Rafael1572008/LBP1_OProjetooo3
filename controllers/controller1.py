@@ -18,7 +18,7 @@ def login():
     return render_template("login.html", aviso = False)
 
 
-tarefas_controllers.before_request   #não compreendi a onde aparece
+@tarefas_controllers.before_request   #não compreendi a onde aparece
 def request_info():
     print("execulta antes da requisição")
 
@@ -35,6 +35,17 @@ def pegar():
         
         aviso = "Senha ou usuario incorreto"
         return render_template('login.html', aviso = aviso)
+    
+@tarefas_controllers.after_request
+def after_request(response):
+    print("execultar depois da requisição")
+    return response
+
+
+@tarefas_controllers.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('tarefas.index'))
     
 
 #perguntar a onde se aplica o tempo de sessão
