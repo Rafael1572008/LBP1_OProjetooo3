@@ -15,7 +15,9 @@ def index():
 
 @mode.route('/login')   #login
 def login():
-    return render_template("login.html", aviso = False)
+    if 'username' in session:
+        return redirect(url_for('users.index'))
+    return render_template('login.html', aviso = False)
 
 
 @mode.before_request   #não compreendi a onde aparece
@@ -23,10 +25,15 @@ def request_info():
     print("execulta antes da requisição")
 
 
-@mode.route('/pegar', methods = ['POST', 'GET'])   ##rota para obter os dados
+@mode.route('/pegar', methods = ['POST', 'GET'])   #rota para obter os dados
 def pegar():
-    nome = request.form.get('username')
-    senha = request.form.get('password')
+    if request.method == 'POST':
+        nome = request.form.get('username')
+        senha = request.form.get('password')
+
+    if request.method == 'GET':
+        nome = request.args.get('username')
+        senha = request.args.get('password')
 
     for user in users:
         if user.nome == nome and user.senha == senha:
