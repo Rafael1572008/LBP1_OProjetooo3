@@ -1,10 +1,15 @@
-#class Tarefas:
-    #def __init__(self, nome, estilo = "Não encontrado"):
-       # self.nome = nome
-        #self.estilo = estilo
+class Users:
+    def __init__(self, nome, senha, admin = False):
+         self.nome = nome
+         self.senha = senha
+         self.admin = admin
 
-tarefas = [{"nome": "MuBesta", "senha": "12345", "admin": 1},
-           {"nome": "Rafapi", "senha": "senha", "admin": 0}]
-#t1 = (Tarefas("Palworld", "Mundo Abrido"))
-#tarefas.append(t1)
-#tarefas.append((Tarefas("Super Mariano")))
+    def __repr__(self):
+        return f"Users(nome={self.nome}, senha={self.senha}, admin={self.admin})"     
+
+users = []
+
+user_1 = Users("mubeta", "12345")
+users.append(user_1)
+user_2 = Users("rafapi", "12345", True)
+users.append(user_2)

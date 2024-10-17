@@ -1,52 +1,48 @@
 from flask import Blueprint, render_template, session, request, url_for, redirect
-from models.models1 import tarefas   #importaçãoes
+from models.models1 import users   #importaçãoes
 
 
-tarefas_controllers = Blueprint('tarefas', __name__) #blueprint vindo de models, necessario para fazer a configuração
+mode = Blueprint('users', __name__) #blueprint vindo de models, necessario para fazer a configuração
 
 
-@tarefas_controllers.route('/')  #aba principal
+@mode.route('/')  #aba principal
 def index():
     if 'username' in session:
         print (f"Bem Vindo {session['username']}")
-        return render_template('html.html', tarefas = tarefas)
-    return redirect(url_for('tarefas.login'))
+        return render_template('html.html', users = users)
+    return redirect(url_for('users.login'))
 
 
-@tarefas_controllers.route('/login')   #login
+@mode.route('/login')   #login
 def login():
     return render_template("login.html", aviso = False)
 
 
-@tarefas_controllers.before_request   #não compreendi a onde aparece
+@mode.before_request   #não compreendi a onde aparece
 def request_info():
     print("execulta antes da requisição")
 
 
-@tarefas_controllers.route('/pegar', methods = ['POST', 'GET'])   ##rota para obter os dados
+@mode.route('/pegar', methods = ['POST', 'GET'])   ##rota para obter os dados
 def pegar():
     nome = request.form.get('username')
     senha = request.form.get('password')
 
-    for user in tarefas:
-        if user["nome"] == nome and user["senha"] == senha:
+    for user in users:
+        if user.nome == nome and user.senha == senha:
             session['username'] = nome
-            return redirect(url_for('tarefas.index'))
+            return redirect(url_for('users.index'))
         
-        aviso = "Senha ou usuario incorreto"
-        return render_template('login.html', aviso = aviso)
+    aviso = "Senha ou usuario incorreto"
+    return render_template('login.html', aviso = aviso)
     
-@tarefas_controllers.after_request
+@mode.after_request
 def after_request(response):
     print("execultar depois da requisição")
     return response
 
 
-@tarefas_controllers.route('/logout')
+@mode.route('/logout')
 def logout():
     session.pop('username', None)
-    return redirect(url_for('tarefas.index'))
-    
-
-#perguntar a onde se aplica o tempo de sessão
-#não entendi midware
+    return redirect(url_for('users.index'))

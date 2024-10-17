@@ -9,14 +9,15 @@
 <body>
     <h1 class="title">Titulo Gamer</h1>
     <div class="container">
+        <h3>Nome = se é admin</h3>
         <ul>
-            {% for tarefa in tarefas %}
+            {% for user in users %}
                 <li>
-                    {{ tarefa.nome }} - 
-                    {% if tarefa.estilo %}
-                        {{ tarefa.estilo }}
+                    {{ user.nome }} - 
+                    {% if user.admin %}
+                        {{ user.admin }}
                     {% else %}
-                        Não pode mostra a senha pain!
+                        Não é adm pai!
                     {% endif %}
                 </li>
             {% endfor %}

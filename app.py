@@ -1,11 +1,11 @@
 from flask import Flask, render_template
-from controllers.controller1 import tarefas_controllers
+from controllers.controller1 import mode
 
 app = Flask(__name__)
 
-app.secret_key = 'xd'
+app.secret_key = 'xd_key'
 
-app.register_blueprint(tarefas_controllers)
+app.register_blueprint(mode)
 
 
 if (__name__) == '__main__':
