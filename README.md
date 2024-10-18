@@ -4,12 +4,16 @@ Configuração de ambiente virtual e instalação do Flask para desenvolvimento 
 
 ## Instruções
 
-### Ambiente Virtual(Python)
+### Ambiente Virtual
 
 Crie o ambiente virtual usando o comando abaixo:
+```
+python3 -m venv AMB
+```
+#### Python
+
 
 ```bash
-python3 -m venv AMB
 source AMB/bin/activate
 pip install flask
 ```
@@ -17,13 +21,4 @@ pip install flask
 ```
 AMB\Scripts\activate
 ```
-
-
-### Melhorias:
-
-- **Seções claras**: Usei seções como "Ambiente Virtual", "Linux" e "Windows" para que o arquivo seja fácil de entender.
-- **Markdown avançado**: Usei negrito e listas numeradas para os passos, tornando a leitura mais fácil e organizada.
-- **Blocos de código**: Coloquei os comandos em blocos de código com a sintaxe correta, o que ajuda na legibilidade e na identificação de comandos específicos.
-
-Esse estilo proporciona uma aparência mais profissional e limpa. O que acha dessa sugestão?
 
