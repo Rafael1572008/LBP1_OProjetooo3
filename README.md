@@ -10,13 +10,14 @@ Crie o ambiente virtual usando o comando abaixo:
 ```
 python3 -m venv AMB
 ```
-#### Python
-
+### Python
 
 ```bash
 source AMB/bin/activate
 pip install flask
 ```
+ **Seções claras**: Selecione o interpretador
+
 ### Windows
 ```
 AMB\Scripts\activate
