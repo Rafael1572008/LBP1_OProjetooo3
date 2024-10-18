@@ -31,15 +31,3 @@ AMB\Scripts\activate
 
 - [Documentação do Flask](https://flask.palletsprojects.com/)
 <br><br>
-
-### 3. **Testes**
-
-Instruções sobre como rodar testes, se aplicável.
-
-```markdown
-## Testes
-
-Para executar os testes, use:
-
-```bash
-pytest
