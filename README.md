@@ -25,7 +25,6 @@ pip install flask
 ```
 AMB\Scripts\activate
 ```
-<br><br>
 ---
 ## Referência
 
