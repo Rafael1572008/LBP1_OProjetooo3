@@ -11,8 +11,9 @@ Crie o ambiente virtual usando o comando abaixo:
 python3 -m venv AMB
 ```
 
-- **Sé der erro, tente tirar o 3**
-## Python
+- **Sé der erro, tente tirar o 3**<br>
+  
+### Python
 
 ```bash
 source AMB/bin/activate
