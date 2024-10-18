@@ -9,7 +9,7 @@ class Users:
 
 users = []
 
-user_1 = Users("muborges", "12345")
+user_1 = Users("muborges", "12345", True)
 users.append(user_1)
-user_2 = Users("rafapi", "12345", True)
+user_2 = Users("rafapi", "12345")
 users.append(user_2)
