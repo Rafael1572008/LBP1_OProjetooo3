@@ -27,6 +27,7 @@ AMB\Scripts\activate
 ```
 <br><br>
 ---
+## Referências
 
-Este texto aparece abaixo do separador.
-
+- [Documentação do Flask](https://flask.palletsprojects.com/)
+- [Tutorial de Git](https://git-scm.com/book/pt-br/v2)
