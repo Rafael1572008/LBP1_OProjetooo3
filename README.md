@@ -7,6 +7,7 @@ Configuração de ambiente virtual e instalação do Flask para desenvolvimento 
 ### Ambiente Virtual
 
 Crie o ambiente virtual usando o comando abaixo:
+- **Sé der erro, tente tirar o 3**
 ```
 python3 -m venv AMB
 ```
