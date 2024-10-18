@@ -11,7 +11,7 @@ Crie o ambiente virtual usando o comando abaixo:
 python3 -m venv AMB
 ```
 
-- **Sé der erro, tente tirar o 3**<br><br>
+- **Sé der erro, tente tirar o 3**<br>
   
 ### Python
 
@@ -19,7 +19,7 @@ python3 -m venv AMB
 source AMB/bin/activate
 pip install flask
 ```
-- **Selecione o interpretador**<br><br>
+- **Selecione o interpretador**<br>
 
 ### Windows
 ```
