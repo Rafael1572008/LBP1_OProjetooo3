@@ -12,7 +12,7 @@ python3 -m venv AMB
 ```
 
 - **Sé der erro, tente tirar o 3**
-### Python
+## Python
 
 ```bash
 source AMB/bin/activate
