@@ -16,7 +16,7 @@ python3 -m venv AMB
 source AMB/bin/activate
 pip install flask
 ```
- **Seções claras**: Selecione o interpretador
+- **Seções claras**: Selecione o interpretador
 
 ### Windows
 ```
