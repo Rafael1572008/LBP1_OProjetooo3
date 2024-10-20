@@ -4,9 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 0;
+        }
+        img {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .add-button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .add-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <img hrel="https://tpucdn.com/gpu-specs/images/c/3774-front.small.jpg"/>
-
+    <h1>Seu Carrinho de Compras</h1>
+    
+    <ul>
+        {% for produto in produtos %}
+        <li>
+            <h2>{{ produto.nome }}</h2>
+            <p>Preço: R$ {{ produto.preco }}</p>
+            <img src="{{ produto.img }}" alt="{{ produto.nome }}" width="200">
+            <form action="/carrinho/add" method="POST">
+                <input type="hidden" name="produto_id" value="{{ produto.id }}">
+                <button class="add-button" type="submit">Adicionar {{ produto.nome }} ao carrinho</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

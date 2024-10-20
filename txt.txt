@@ -1,1 +1,3 @@
-cookies: pagina com lista de produtos, e guardar em coockies. flash mensager: fazer todos os erros, paginas de erro: 404, 403, 500
+cookies: pagina de produto com lista de produtos, e guardar em coockies. 
+flash menssager: fazer todos os erros.
+paginas de erro: 404, 403, 500.
