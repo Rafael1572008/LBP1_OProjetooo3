@@ -1,15 +1,12 @@
 body {
     padding: 25px;
+    background-color: #ce2323;
 }
 
 .title {
     text-align: center;
     color: #000000;
     font-family: Courier New;
-}
-
-body {
-    background-color: #ffffff;
 }
 
 .container {

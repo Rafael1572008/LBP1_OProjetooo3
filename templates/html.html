@@ -7,17 +7,27 @@
     <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 </head>
 <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul>
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>    
+        {% endif %}
+    {% endwith %}
+
     <h1 class="title">Titulo Gamer</h1>
     <div class="container">
         <h3>Nome = se é admin</h3>
         <ul>
             {% for user in users %}
                 <li>
-                    {{ user.nome }} - 
+                    {{ user.nome }} = 
                     {% if user.admin %}
                         é o fodão
                     {% else %}
-                        Não é adm pai!
+                        Não é o fodão
                     {% endif %}
                 </li>
             {% endfor %}

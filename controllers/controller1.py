@@ -1,53 +1,48 @@
-from flask import Blueprint, render_template, session, request, url_for, redirect
-from models.models1 import users   #importaçãoes
+from flask import Blueprint, render_template, session, request, url_for, redirect, flash
+from models.models1 import users   # Importações
 
+mode = Blueprint('users', __name__)  # Blueprint
 
-mode = Blueprint('users', __name__) #blueprint vindo de models, necessario para fazer a configuração
-
-
-@mode.route('/')  #aba principal
+@mode.route('/')  # Rota principal
 def index():
     if 'username' in session:
-        print (f"Bem Vindo {session['username']}")
-        return render_template('html.html', users = users)
+        print(f"Bem Vindo {session['username']}")
+        return render_template('html.html', users=users)
     return redirect(url_for('users.login'))
 
-
-@mode.route('/login')   #login
+@mode.route('/login')   # Rota de login
 def login():
     if 'username' in session:
         return redirect(url_for('users.index'))
-    return render_template('login.html', aviso = False)
+    flash('Logado Com sucesso', 'success')  #Flash Menssager
+    return render_template('login.html', aviso=False)
 
-
-@mode.before_request   #não compreendi a onde aparece
+@mode.before_request   # Executa antes da requisição
 def request_info():
-    print("execulta antes da requisição")
+    print("Executa antes da requisição")
 
-
-@mode.route('/pegar', methods = ['POST', 'GET'])   #rota para obter os dados
+@mode.route('/pegar', methods=['POST', 'GET'])   # Rota para obter dados
 def pegar():
     if request.method == 'POST':
         nome = request.form.get('username')
         senha = request.form.get('password')
 
-    if request.method == 'GET':
-        nome = request.args.get('username')
-        senha = request.args.get('password')
+        # Verifica se o usuário e a senha estão corretos
+        for user in users:
+            if user.nome == nome and user.senha == senha:
+                session['username'] = nome
+                return redirect(url_for('users.index'))
 
-    for user in users:
-        if user.nome == nome and user.senha == senha:
-            session['username'] = nome
-            return redirect(url_for('users.index'))
-        
-    aviso = "Senha ou usuario incorreto"
-    return render_template('login.html', aviso = aviso)
-    
+        aviso = "Senha ou usuário incorreto"
+        return render_template('login.html', aviso=aviso)
+
+    # Se o método for GET, não há necessidade de verificar as credenciais aqui
+    return render_template('login.html', aviso=False)
+
 @mode.after_request
 def after_request(response):
-    print("execultar depois da requisição")
+    print("Executa depois da requisição")
     return response
-
 
 @mode.route('/logout')
 def logout():
