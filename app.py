@@ -9,6 +9,11 @@ app.secret_key = 'xd_key'
 app.register_blueprint(mode)
 app.register_blueprint(prod)
 
+app.errorhandler(404)
+def page_not_found(e):
+    app.logger.error(f"erro 404: {e}"), 404
+    return render_template('404.html'), 404
+
 
 if (__name__) == '__main__':
     app.run(debug=True)
