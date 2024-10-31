@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, session, request, url_for, redirect, flash
+from flask import Blueprint, render_template, session, request, url_for, redirect, flash, abort
 from models.models1 import users   # Importações
 
 mode = Blueprint('users', __name__)  # Blueprint
@@ -14,8 +14,9 @@ def index():
 def login():
     if 'username' in session:
         return redirect(url_for('users.index'))
-    flash('Logado Com sucesso', 'success')  #Flash Menssager
-    return render_template('login.html', aviso=False)
+    else:
+        flash("Sem sessão", "erro")
+        return redirect(url_for('users.pegar'))
 
 @mode.before_request   # Executa antes da requisição
 def request_info():
@@ -31,10 +32,11 @@ def pegar():
         for user in users:
             if user.nome == nome and user.senha == senha:
                 session['username'] = nome
+                session['user_type'] = 'vip' if user.admin else 'publico'
                 return redirect(url_for('users.index'))
-
-        aviso = "Senha ou usuário incorreto"
-        return render_template('login.html', aviso=aviso)
+            
+        flash("Erro no login", "erro")
+        return redirect(url_for('users.pegar'))
 
     # Se o método for GET, não há necessidade de verificar as credenciais aqui
     return render_template('login.html', aviso=False)
@@ -43,6 +45,12 @@ def pegar():
 def after_request(response):
     print("Executa depois da requisição")
     return response
+
+@mode.route('/vip')
+def vip():
+    if 'username' not in session or session.get('user_type') != 'vip':
+        abort(403)  
+    return render_template('rotavip.html')
 
 @mode.route('/logout')
 def logout():
