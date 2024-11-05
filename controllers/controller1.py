@@ -18,10 +18,6 @@ def login():
         flash("Sem sessão", "erro")
         return redirect(url_for('users.pegar'))
 
-@mode.before_request   # Executa antes da requisição
-def request_info():
-    print("Executa antes da requisição")
-
 @mode.route('/pegar', methods=['POST', 'GET'])   # Rota para obter dados
 def pegar():
     if request.method == 'POST':
@@ -41,15 +37,8 @@ def pegar():
     # Se o método for GET, não há necessidade de verificar as credenciais aqui
     return render_template('login.html', aviso=False)
 
-@mode.after_request
-def after_request(response):
-    print("Executa depois da requisição")
-    return response
-
 @mode.route('/vip')
 def vip():
-    if 'username' not in session or session.get('user_type') != 'vip':
-        abort(403)  
     return render_template('rotavip.html')
 
 @mode.route('/logout')
