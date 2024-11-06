@@ -3,10 +3,10 @@ from controllers.controller1 import mode
 from controllers.carrinho import prod
 
 app = Flask(__name__)
-app.secret_key = ' '
+app.secret_key = '9751a2bf696a9d8ff9a136d07173a9cbe5fe4996c50f576cca1f42c882b1c8f4'
 
-rotas_publicas = ["pegar", "login"]
-rotas_privadas = ["vip"]
+rotas_publicas = ["users.pegar", "users.login", "users.index", "users.logout", "static"]
+rotas_privadas = ["users.vip"]
 
 app.register_blueprint(mode)
 app.register_blueprint(prod)
@@ -18,18 +18,22 @@ def request_info():
     print(rota)
     print(session.get('user_type'))
     print('username')
+    print(session)
 
     if rota in rotas_publicas or rota is None:
         if 'username' in session and rota == "user.pegar":
             return redirect(url_for('users.index'))
-        else:
-            flash("Você precisa estar logado para acessar esta página.", "erro")
-            return redirect(url_for('users.pegar'))
+        return
 
     if rota in rotas_privadas:
         if 'username' not in session or session.get('user_type') != 'vip':
+            print("entou")
             flash("Acesso negado. Você precisa ser um usuário VIP.", "erro")
-            abort(403)      
+            abort(403)
+
+    if rota not in rotas_privadas and rota not in rotas_publicas and 'username' not in session:
+        flash("Necessario ter sessão")
+        abort(403)        
 
 @app.after_request
 def after_request(response):
